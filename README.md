@@ -18,3 +18,5 @@
    1. Scrollen (set und get)
    1. Forms
 1. AJAX und HTML requests
+   1. von einer JSON einlesen
+   2. von einer XML einlesen
