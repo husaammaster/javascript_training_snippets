@@ -1,0 +1,62 @@
+html, body, a, div, h1, h2, h3, h4, h5, h6, span, p, img, strong, ul, li, table, th, td, tr {
+    margin: 0px;
+    padding: 0px;
+    border: 0px none;
+    font-weight: normal;
+    font-style: inherit;
+    font-family: inherit;
+    font-variant: inherit;
+    text-decoration: none;
+    table-layout: inherit;
+}
+
+body, html {
+    font-family: Verdana, Arial, sans-serif;
+    background-color: #fff;
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+    margin: 0 auto;
+}
+
+main {
+    margin: 3rem auto 3rem 10rem;
+    width: 350px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-weight: bold;
+    color: #0f9e2e;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+input {
+    border: 1px solid #0f9e2e;
+    padding: .25rem .5rem;
+    font-size: 1rem;
+    width: 14rem;
+}
+
+#helden {
+    list-style-type: none;
+    height: 100%;
+    border-left: 1px solid #0f9e2e;
+    text-align: right;
+    box-sizing: border-box;
+    width: 15rem;
+    font-size: 1rem;
+    padding: 0 0 25px;
+}
+
+#helden li {
+    line-height: 1.2em;
+    padding: 7px 20px;
+}
+
+.found {
+    background-color: #0f9e2e;
+    color: #fff;
+}

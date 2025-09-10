@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  font-size: 100%;
+  background: #ddd;
+  color: #333;
+  font-size: 16px;
+  font-family: Verdana, Arial, sans-serif;
+}
+
+p, h1, h2 {
+  margin-bottom: 1rem;
+  font-weight: normal;
+}
+
+h1 {font-size: 1.75rem;}
+
+h2 {
+  color: rgb(29, 119, 29);
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+}
+
+p {
+  line-height: 1.2;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+p:last-child {margin-bottom: 3rem;}
+
+button {
+  padding: 5px;
+  font-size: 1.5rem;
+}
+
+.goes_left {float: left;}
+
+.goes_right {float: right;}
+
+.bookSite {
+  font-size: .8rem;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  padding: .3rem;
+  border: 2px solid #ccc;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 20px;
+  margin: 25px auto 0;
+}
+
+.eBook_wrapper {
+  margin: 25px auto;
+  width: 80vw;
+  max-width: 800px;
+  position: relative;
+  background: #fff;
+}
+
+.eBook_wrapper .eBook {
+  padding: 3rem 2rem 6rem 2rem;
+  min-height: 75vh;
+  position: relative;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.eBook_wrapper .eBook .eBook_footer {
+  color: #999;
+  font-size: .8em;
+}
+
+.eBook_wrapper .eBook .pagination {
+  font-size: 1.8em;
+  padding: 0 1.25rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1rem;
+  white-space: nowrap;
+}
+
+.eBook_wrapper .eBook .pagination .progressbar {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.eBook_wrapper .eBook .pagination progress {
+  width: 100%;
+  height: 1rem;
+  padding: 0;
+  margin-bottom: .25rem;
+  background-color: #ccc;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+
+.eBook_wrapper .eBook .pagination progress::-webkit-progress-bar {
+  padding: 0;
+  border-style: none;
+  background-color: transparent;
+}
+
+.eBook_wrapper .eBook .pagination progress::-webkit-progress-value {
+  -webkit-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+  background-color: #e445a7;
+  background-image: -webkit-linear-gradient(top, #ddd, #e445a7, #ddd);
+  background-image: linear-gradient(to bottom, #ddd, #e445a7, #ddd);
+}
+
+.eBook_wrapper .eBook .pagination progress::-moz-progress-bar {
+  -moz-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+  background-color: #e445a7;
+  background-image: -moz-linear-gradient(top, #ddd, #e445a7, #ddd);
+  background-image: linear-gradient(to bottom, #ddd, #e445a7, #ddd);
+}
+
+.eBook_wrapper .eBook .eBook_content:empty {
+  color: #666;
+  font-size: 1.25rem;
+  text-align: center;
+  padding-top: 12rem;
+}
+
+.eBook_wrapper .eBook .eBook_content:empty:after {
+  content: "Keine Seite vorhanden.";
+}

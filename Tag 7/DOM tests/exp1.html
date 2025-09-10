@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Inhalts-Toggle</title>
+    <style>
+      .hidden {
+        display: none;
+      }
+      .container {
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <button class="toggle">Zeige/Verberge</button>
+      <p>Das ist Absatz 1. Lorem ipsum dolor sit amet.</p>
+    </div>
+
+    <div class="container">
+      <button class="toggle">Zeige/Verberge</button>
+      <p>Das ist Absatz 2. Consectetur adipiscing elit.</p>
+    </div>
+
+    <div class="container">
+      <button class="toggle">Zeige/Verberge</button>
+      <p>Das ist Absatz 3. Integer nec odio.</p>
+    </div>
+
+    <script>
+      document.querySelectorAll(".toggle").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const p = this.nextElementSibling;
+          if (!p) return;
+          p.classList.toggle("hidden");
+          this.textContent = p.classList.contains("hidden")
+            ? "Anzeigen"
+            : "Verbergen";
+        });
+      });
+    </script>
+  </body>
+</html>

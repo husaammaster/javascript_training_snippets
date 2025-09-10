@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>6 - innerHTML Beispiel</title>
+  </head>
+  <body>
+    <button id="fill">Inhalt einfügen</button>
+    <div id="box"></div>
+
+    <script>
+      document.getElementById("fill").addEventListener("click", () => {
+        document.getElementById("box").innerHTML =
+          "<h3>Überschrift</h3><p>Ein kurzer <strong>HTML</strong>-Text mit <em>Markup</em>.</p>";
+      });
+    </script>
+  </body>
+</html>

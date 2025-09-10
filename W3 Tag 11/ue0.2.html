@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+    <style>
+      .border {
+        border: 1px red solid;
+      }
+    </style>
+
+    <script defer>
+      "use strict";
+
+      let tmpStorage = null;
+      let tmpElement = null;
+
+      const allEl = document.querySelectorAll("*");
+
+      for (const el of allEl) {
+        console.log(el);
+
+        el.addEventListener("click", (evnt) => {
+          console.log(`${el} pressed`);
+
+          if (tmpElement == null) {
+            tmpElement = evnt.target;
+            tmpStorage = tmpElement.innerText;
+
+            console.log(`Stored element ${tmpElement}`);
+          } else {
+            tmpElement.innerText = evnt.target.innerText;
+            evnt.target.innerText = tmpStorage;
+
+            tmpStorage = null;
+            tmpElement = null;
+          }
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Meine Webseite</h1>
+    <div class="inhalt">
+      <p class="hallo">
+        Zwei flinke Boxer jagen die quirlige Eva und ihren Mops durch Sylt.
+      </p>
+      <p class="welt">
+        Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.
+      </p>
+      <p class="hallo">
+        Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich.
+      </p>
+      <p class="mond">
+        Vogel Quax zwickt Johnys Pferd Bim. Sylvia wagt quick den Jux bei
+        Pforzheim.
+      </p>
+    </div>
+  </body>
+</html>

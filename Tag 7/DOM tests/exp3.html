@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dynamische Liste</title>
+    <style>
+      ul {
+        padding-left: 1.2rem;
+      }
+      .del {
+        margin-left: 0.5rem;
+        color: white;
+        background: #c33;
+        border: none;
+        padding: 2px 6px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="itemInput" placeholder="Neues Item" />
+    <button id="addBtn">Hinzufügen</button>
+
+    <ul id="list"></ul>
+
+    <script>
+      const input = document.getElementById("itemInput");
+      const addBtn = document.getElementById("addBtn");
+      const list = document.getElementById("list");
+
+      addBtn.addEventListener("click", () => {
+        const text = input.value.trim();
+        if (!text) return;
+        const li = document.createElement("li");
+        li.textContent = text;
+        const del = document.createElement("button");
+        del.textContent = "Löschen";
+        del.className = "del";
+        del.dataset.action = "delete";
+        li.appendChild(del);
+        list.appendChild(li);
+        input.value = "";
+        input.focus();
+      });
+
+      list.addEventListener("click", (e) => {
+        const btn = e.target;
+        if (btn.dataset.action === "delete") {
+          const li = btn.parentElement;
+          if (li) li.remove();
+        }
+      });
+
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") addBtn.click();
+      });
+    </script>
+  </body>
+</html>

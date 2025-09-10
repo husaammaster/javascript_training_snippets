@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+    <style>
+      header {
+        background-color: lightgoldenrodyellow;
+        position: fixed;
+        top: 0px;
+        padding: 10px;
+        width: 100%;
+      }
+
+      footer {
+        background-color: lightgoldenrodyellow;
+        position: fixed;
+        bottom: 0px;
+        padding: 10px;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Einfacher Scroll-Tracker</h1>
+      <div class="info" id="info" aria-live="polite">
+        <div>
+          Scroll (px): <span id="scrollPx"><strong>0</strong></span>
+        </div>
+        <div>
+          Fortschritt: <span id="scrollPercent"><strong>0%</strong></span>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="content-block">
+        <h2>Einleitung</h2>
+        <p>
+          Dies ist eine einfache Seite mit viel Inhalt, damit gescrollt werden
+          kann.
+        </p>
+      </section>
+
+      <section class="content-block">
+        <h2>Abschnitt 1</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </section>
+
+      <section
+        class="content-block"
+        style="
+          height: 500px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        Großer Platzhalterblock
+      </section>
+
+      <section class="content-block">
+        <h2>Abschnitt 2</h2>
+        <p>Weitere Inhalte hier.</p>
+      </section>
+
+      <section class="content-block" id="generated"></section>
+
+      <section class="content-block">
+        <h2>Schluss</h2>
+        <p>
+          Ende des Hauptinhalts (Footer wird bei Prozentberechnung ignoriert).
+        </p>
+      </section>
+      <section class="content-block">
+        <h2>Einleitung</h2>
+        <p>
+          Dies ist eine einfache Seite mit viel Inhalt, damit gescrollt werden
+          kann.
+        </p>
+      </section>
+
+      <section class="content-block">
+        <h2>Abschnitt 1</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </section>
+
+      <section
+        class="content-block"
+        style="
+          height: 500px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        Großer Platzhalterblock
+      </section>
+
+      <section class="content-block">
+        <h2>Abschnitt 2</h2>
+        <p>Weitere Inhalte hier.</p>
+      </section>
+
+      <section class="content-block" id="generated"></section>
+
+      <section class="content-block">
+        <h2>Schluss</h2>
+        <p>
+          Ende des Hauptinhalts (Footer wird bei Prozentberechnung ignoriert).
+        </p>
+      </section>
+      <section class="content-block">
+        <h2>Einleitung</h2>
+        <p>
+          Dies ist eine einfache Seite mit viel Inhalt, damit gescrollt werden
+          kann.
+        </p>
+      </section>
+
+      <section class="content-block">
+        <h2>Abschnitt 1</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </section>
+
+      <section
+        class="content-block"
+        style="
+          height: 500px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        Großer Platzhalterblock
+      </section>
+
+      <section class="content-block">
+        <h2>Abschnitt 2</h2>
+        <p>Weitere Inhalte hier.</p>
+      </section>
+
+      <section class="content-block" id="generated"></section>
+
+      <section class="content-block">
+        <h2>Schluss</h2>
+        <p>
+          Ende des Hauptinhalts (Footer wird bei Prozentberechnung ignoriert).
+        </p>
+      </section>
+    </main>
+
+    <footer id="footer">
+      <p>Footer-Bereich</p>
+    </footer>
+
+    <script>
+      "use strict";
+      const docHeight = document.documentElement.scrollHeight;
+      const winHeight = document.documentElement.clientHeight;
+      const maxScrollTop = docHeight - winHeight;
+
+      const elScrollPx = document.querySelector("#scrollPx strong");
+      const elScrollPercent = document.querySelector("#scrollPercent strong");
+
+      window.addEventListener("scroll", () => {
+        let scrollTop = document.documentElement.scrollTop.toFixed(1);
+        console.log(scrollTop);
+        elScrollPx.innerText = scrollTop;
+
+        let scrollPerc = (scrollTop / maxScrollTop).toFixed(1);
+        console.log(scrollPerc);
+        elScrollPercent.innerText = scrollPerc;
+      });
+    </script>
+  </body>
+</html>

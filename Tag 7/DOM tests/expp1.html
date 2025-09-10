@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>2 - Liste aufbauen</title>
+  </head>
+  <body>
+    <button id="build">Liste bauen</button>
+    <ul id="myList"></ul>
+
+    <script>
+      const data = ["Apfel", "Banane", "Kirsche", "Dattel", "Erdbeere"];
+      const ul = document.getElementById("myList");
+      document.getElementById("build").addEventListener("click", () => {
+        ul.innerHTML = ""; // vorher leeren
+        data.forEach((item, i) => {
+          const li = document.createElement("li");
+          li.textContent = `${i + 1}. ${item}`;
+          ul.appendChild(li);
+        });
+      });
+    </script>
+  </body>
+</html>

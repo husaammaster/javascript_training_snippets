@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+    <style>
+      * {
+        border: lightgray 1px solid;
+      }
+      .flexContainer {
+        display: flex;
+        justify-content: space-between;
+        background-color: lightgoldenrodyellow;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin: auto;
+        padding: 10%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Meine Webseite</h1>
+    <div class="inhalt">
+      <p class="hallo">
+        Zwei flinke Boxer jagen die quirlige Eva und ihren Mops durch Sylt.
+      </p>
+      <p class="welt">
+        Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.
+      </p>
+      <p class="hallo">
+        Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich.
+      </p>
+      <p class="mond">
+        Vogel Quax zwickt Johnys Pferd Bim. Sylvia wagt quick den Jux bei
+        Pforzheim.
+      </p>
+      <button class="button">Flex Box Hinzufügen</button>
+      <dic class="flexContainer"></dic>
+    </div>
+  </body>
+
+  <script defer>
+    "use strict";
+
+    const elButton = document.querySelector(".button");
+
+    elButton.addEventListener("click", (evnt) => {
+      const newBox = document.createElement("div");
+      newBox.innerText = ~~(Math.random() * 20);
+      newBox.style.width = "50px";
+      newBox.style.height = "50px";
+
+      const flexContainer = document.querySelector(".flexContainer");
+
+      flexContainer.append(newBox);
+
+      setTimeout(() => {
+        newBox.remove();
+      }, 2000);
+    });
+  </script>
+</html>

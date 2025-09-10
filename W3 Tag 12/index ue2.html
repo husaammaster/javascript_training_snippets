@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>bilderGallerie</title>
+    <style>
+      .square {
+        margin: 15;
+        border: red 20px solid;
+      }
+      .landscape {
+        margin: 15px;
+        border: yellow 20px solid;
+      }
+      .portrait {
+        margin: 15;
+        border: blue 20px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="BilderGallerie"></div>
+    <script>
+      "use strict";
+
+      const elGallerie = document.querySelector("#BilderGallerie");
+      let foodImgArray = [
+        "./img/food10.jpg",
+        "./img/food3.jpg",
+        "./img/food9.jpg",
+        "./img/food2.jpg",
+        "./img/food5.jpg",
+        "./img/food8.jpg",
+        "./img/food1.jpg",
+        "./img/food6.jpg",
+        "./img/food4.jpg",
+        "./img/food7.jpg",
+      ];
+
+      function init(imgArray) {
+        for (let imgUrl of imgArray) {
+          const elImg = document.createElement("img");
+          elImg.src = imgUrl;
+          const width = elImg.naturalWidth;
+          const height = elImg.naturalHeight;
+          const ratioClass =
+            height == width
+              ? "square"
+              : height > width
+              ? "portrait"
+              : "landscape";
+          elImg.classList.add(ratioClass);
+          elImg.title = ratioClass;
+
+          elGallerie.append(elImg);
+        }
+      }
+      init(foodImgArray);
+    </script>
+  </body>
+</html>

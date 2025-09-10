@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sortierbare Tabelle</title>
+    <style>
+      th {
+        cursor: pointer;
+        user-select: none;
+      }
+      th.asc::after {
+        content: " ▲";
+      }
+      th.desc::after {
+        content: " ▼";
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      td,
+      th {
+        padding: 6px 8px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th data-type="text">Name</th>
+          <th data-type="number">Alter</th>
+          <th data-type="text">Stadt</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Anna</td>
+          <td>28</td>
+          <td>Berlin</td>
+        </tr>
+        <tr>
+          <td>Ben</td>
+          <td>34</td>
+          <td>Hamburg</td>
+        </tr>
+        <tr>
+          <td>Clara</td>
+          <td>22</td>
+          <td>München</td>
+        </tr>
+        <tr>
+          <td>David</td>
+          <td>45</td>
+          <td>Köln</td>
+        </tr>
+        <tr>
+          <td>Eva</td>
+          <td>31</td>
+          <td>Stuttgart</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      const table = document.getElementById("tbl");
+      const tbody = table.tBodies[0];
+      const headers = table.querySelectorAll("th");
+
+      headers.forEach((th, idx) => {
+        th.addEventListener("click", () => {
+          const type = th.dataset.type || "text";
+          const current = th.classList.contains("asc")
+            ? "asc"
+            : th.classList.contains("desc")
+            ? "desc"
+            : null;
+          headers.forEach((h) => h.classList.remove("asc", "desc"));
+          const dir = current === "asc" ? "desc" : "asc";
+          th.classList.add(dir);
+
+          const rows = Array.from(tbody.querySelectorAll("tr"));
+          rows.sort((a, b) => {
+            const aText = a.children[idx].textContent.trim();
+            const bText = b.children[idx].textContent.trim();
+            if (type === "number") {
+              return dir === "asc"
+                ? Number(aText) - Number(bText)
+                : Number(bText) - Number(aText);
+            } else {
+              return dir === "asc"
+                ? aText.localeCompare(bText, "de")
+                : bText.localeCompare(aText, "de");
+            }
+          });
+
+          rows.forEach((r) => tbody.appendChild(r));
+        });
+      });
+    </script>
+  </body>
+</html>

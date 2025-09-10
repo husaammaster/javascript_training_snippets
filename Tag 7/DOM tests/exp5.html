@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Bild-Galerie Filter</title>
+    <style>
+      img {
+        width: 120px;
+        height: auto;
+        margin: 6px;
+        display: inline-block;
+      }
+      .hidden {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="showJpg">Nur .jpg</button>
+    <button id="showAll">Alle</button>
+
+    <div id="gallery">
+      <img src="bild1.jpg" alt="1 jpg" />
+      <img src="bild2.png" alt="2 png" />
+      <img src="foto.jpg" alt="3 jpg" />
+      <img src="grafik.png" alt="4 png" />
+      <img src="landschaft.jpg" alt="5 jpg" />
+    </div>
+
+    <script>
+      const showJpg = document.getElementById("showJpg");
+      const showAll = document.getElementById("showAll");
+      const imgs = document.querySelectorAll("#gallery img");
+
+      showJpg.addEventListener("click", () => {
+        imgs.forEach((img) => {
+          img.classList.toggle(
+            "hidden",
+            !/\.jpg$/i.test(img.getAttribute("src"))
+          );
+        });
+      });
+
+      showAll.addEventListener("click", () => {
+        imgs.forEach((img) => img.classList.remove("hidden"));
+      });
+    </script>
+  </body>
+</html>

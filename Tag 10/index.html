@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Spaziergang</title>
+    <style>
+        body {
+            height: 100vh;
+            padding: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        form {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        input,
+        button {
+            margin: 3px 0;
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="https://duckduckgo.com" target="_blank">Link1</a></li>
+            <li><a href="https://duckduckgo.com" target="_blank">Link2</a></li>
+        </ul>
+    </nav>
+
+
+    <ul id="liste">
+        <li>Klick</li>
+        <li>Klack</li>
+        <li>Klock</li>
+    </ul>
+
+    <p>
+    <form action="#">
+        <input type="text" id="field" name="field">
+        <input type="text">
+        <input type="text">
+        <button type="submit">Senden</button>
+    </form>
+    </p>
+
+
+    <script src="./js/script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+    <style>
+      .normal {
+        width: 100px;
+        filter: brightness(85%);
+      }
+      .groß {
+        width: 180px;
+        filter: brightness(100%);
+      }
+      img {
+        height: auto;
+        border: 2px dotted gray;
+      }
+      #bilderGallerie {
+        border: 1px solid blue;
+        background-color: lightcyan;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 30px;
+        margin: 30px auto;
+        gap: 20px;
+        width: 80%;
+      }
+      #vollBild {
+        margin: auto;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="vollBild"></div>
+    <div id="bilderGallerie">
+      <button id="schließenButton" width="300px" height="168px">
+        Bild schließen
+      </button>
+      <img src="./assets/imgs/img1.jpg" alt="die Bahn" class="normal" />
+      <img src="./assets/imgs/img2.jpg" alt="die Bahn" class="normal" />
+      <img src="./assets/imgs/img3.jpg" alt="die Bahn" class="normal" />
+      <img src="./assets/imgs/img4.jpg" alt="die Bahn" class="normal" />
+      <img src="./assets/imgs/img5.jpg" alt="die Bahn" class="normal" />
+      <img src="./assets/imgs/img6.jpg" alt="die Bahn" class="normal" />
+      <img src="./assets/imgs/img7.jpg" alt="die Bahn" class="normal" />
+      <img src="./assets/imgs/img8.jpg" alt="die Bahn" class="normal" />
+      <img src="./assets/imgs/img9.jpg" alt="die Bahn" class="normal" />
+      <img src="./assets/imgs/img10.jpg" alt="die Bahn" class="normal" />
+    </div>
+
+    <script>
+      "use strict";
+      const elBilder = document.querySelectorAll("img");
+      const elSchließen = document.querySelector("#schließenButton");
+      const elVollBild = document.querySelector("#vollBild");
+
+      for (const elBild of elBilder) {
+        elBild.addEventListener("click", (evnt) => {
+          evnt.target.classList.toggle("normal");
+          evnt.target.classList.toggle("groß");
+
+          const elGrossesBild = document.createElement("img");
+          elGrossesBild.src = evnt.target.src;
+          elGrossesBild.style.width = "600px";
+          elVollBild.innerHTML = "";
+          elVollBild.append(elGrossesBild);
+        });
+      }
+      elSchließen.addEventListener("click", () => {
+        elVollBild.innerHTML = "";
+      });
+    </script>
+  </body>
+</html>

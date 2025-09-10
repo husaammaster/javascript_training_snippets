@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Live-Charakterzähler</title>
+    <style>
+      #counter {
+        margin-top: 0.5rem;
+      }
+      .over {
+        color: red;
+        font-weight: bold;
+      }
+      textarea {
+        width: 100%;
+        height: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea
+      id="text"
+      maxlength="200"
+      placeholder="Schreibe hier..."
+    ></textarea>
+    <div id="counter">0 / 200</div>
+
+    <script>
+      const ta = document.getElementById("text");
+      const counter = document.getElementById("counter");
+      const max = 200;
+
+      function update() {
+        let val = ta.value;
+        if (val.length > max) {
+          val = val.slice(0, max);
+          ta.value = val;
+        }
+        counter.textContent = `${val.length} / ${max}`;
+        counter.classList.toggle("over", val.length === max);
+      }
+
+      ta.addEventListener("input", update);
+      update();
+    </script>
+  </body>
+</html>
