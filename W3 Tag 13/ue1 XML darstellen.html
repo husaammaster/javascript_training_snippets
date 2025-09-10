@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      "use strict";
+
+      const sendQuizRequest = () => {
+        const xhr = new XMLHttpRequest();
+
+        xhr.open("get", "./assets/data.xml");
+
+        xhr.addEventListener("load", () => {
+          if (xhr.status == 200) {
+            console.log("Request successful: get /assets/data.xml");
+            let quizContentXML = xhr.responseXML;
+            renderXLM(quizContentXML);
+          } else {
+            console.warn(
+              `Request was unsuccessful: ${xhr.responseURL} returned status ${xhr.statusText}`
+            );
+          }
+        });
+        xhr.send();
+      };
+
+      const renderXLM = (data) => {
+        console.log(data);
+
+        const questions = data.querySelectorAll("question");
+
+        for (let quest of questions) {
+          /*
+        const elText = document.createElement('p');
+        elText.innerHTML = text.innerHTML;
+        document.body.append(elText);
+        */
+
+          // Alternativ kann auch der Knoten als Ganzen in HTML kopiet werden
+          let elQ = document.createElement("p");
+          elQ.innerHTML = quest.innerHTML;
+          document.body.append(elQ);
+        }
+      };
+
+      sendQuizRequest();
+    </script>
+  </body>
+</html>
