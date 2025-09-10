@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JSON</title>
+    <style>
+      .red {
+        color: red;
+      }
+      .green {
+        color: lightgreen;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      "use strict";
+
+      let numRichtig = 0;
+      let numFalsch = 0;
+      let elQuizPunkte;
+
+      const sendQuizRequest = () => {
+        const xhr = new XMLHttpRequest();
+
+        xhr.open("get", "./assets/data.json");
+
+        xhr.addEventListener("load", () => {
+          if (xhr.status == 200) {
+            console.log("Request successful: get /assets/data.json");
+            let quizContent = JSON.parse(xhr.response);
+            initQuiz(quizContent);
+          } else {
+            console.warn(
+              `Request was unsuccessful: ${xhr.responseURL} returned status ${xhr.statusText}`
+            );
+          }
+        });
+        xhr.send();
+      };
+
+      const init = () => {
+        sendQuizRequest();
+      };
+
+      const initQuiz = (quizContent) => {
+        console.log(quizContent);
+        const questions = quizContent.questions;
+        let elQuiz;
+
+        (function grundstruktur() {
+          const elH1 = document.createElement("h1");
+          elH1.innerHTML = "Wer wird Billionär??";
+
+          elQuiz = document.createElement("div");
+          const elQuizH2 = document.createElement("h2");
+
+          elQuizH2.innerHTML = "Die Fragen:";
+          elQuizPunkte = document.createElement("span");
+          elQuizH2.append(elQuizPunkte);
+          elQuiz.append(elQuizH2);
+
+          document.body.append(elQuiz);
+        })();
+
+        const renderAntworten = (answers, elQSec) => {
+          const elAnsUL = document.createElement("ul");
+          for (const ans of answers) {
+            const elAnsLI = document.createElement("li");
+            elAnsLI.innerHTML = "<strong>" + ans.antwort + "</strong>";
+            elAnsLI.classList.add(ans.true);
+            elAnsUL.append(elAnsLI);
+            elAnsUL.beantwortet = false;
+            elAnsLI.addEventListener("click", (evnt) => {
+              if (evnt.currentTarget.parentElement.beantwortet == false) {
+                if (evnt.currentTarget.classList.contains("true")) {
+                  evnt.currentTarget.classList.add("green");
+                  evnt.currentTarget.innerHTML += " => Gut geraten!";
+                  numRichtig++;
+                  elQuizPunkte.innerHTML = ` ${numRichtig}R - ${numFalsch}F`;
+                } else {
+                  evnt.currentTarget.classList.add("red");
+                  evnt.currentTarget.innerHTML += " => No no no!";
+                  numFalsch++;
+                  elQuizPunkte.innerHTML = ` ${numRichtig}R - ${numFalsch}F`;
+                }
+                evnt.currentTarget.parentElement.beantwortet = true;
+              }
+              const currQuestionSection =
+                evnt.currentTarget.parentElement.parentElement;
+              const nextQuestionSection = currQuestionSection.nextSibling;
+              setTimeout(() => {
+                currQuestionSection.classList.add("hidden");
+                if (nextQuestionSection != null)
+                  nextQuestionSection.classList.remove("hidden");
+              }, 1000);
+            });
+          }
+          elQSec.append(elAnsUL);
+        };
+
+        (function fragenRendern(questions) {
+          for (const question of questions) {
+            console.log(question);
+            const elQSec = document.createElement("section");
+            const elQH3 = document.createElement("h3");
+            elQSec.append(elQH3);
+            elQH3.innerHTML = question.question;
+            elQSec.classList.add("hidden");
+            elQuiz.append(elQSec);
+            renderAntworten(question.answers, elQSec);
+          }
+          elQuiz.querySelector("section").classList.remove("hidden");
+        })(questions);
+      };
+
+      init();
+    </script>
+  </body>
+</html>
